@@ -62,7 +62,7 @@
 |---|---|:---:|---:|---|---|
 | `museav` | **云能力** | [museav-cli](https://github.com/webkubor/museav-cli) | 17 | 出图 / 出视频、本地后期（抠图·超分·去水印·压缩）、模板与技能清单、素材上传、图生模板、SCULPT 反推、小红书 SkillHub 发布 | `museav-cli` ≥ 3.9.0 |
 | `vlm` | 本地 | [mlx-vlm-kit](https://github.com/webkubor/mlx-vlm-kit) | 4 | 本地离线看图：描述、任意提问、封面质检、反推出图 prompt | `vlm`（Apple Silicon） |
-| `contrast` | 本地 | [contrast-guard](https://github.com/webkubor/contrast-guard) | 3 | 对比度门禁：静态查色值达不达标、渲染后量实际字号灰阶、存基线与基线对比 | `contrast-guard` |
+| `contrast` | 本地 | [ui-craft](https://github.com/webkubor/ui-craft) | 3 | 对比度门禁：静态查色值达不达标、渲染后量实际字号灰阶、存基线与基线对比 | `ui-craft` |
 | `facet` | 本地 | [@webkubor/facet](https://github.com/webkubor/facet) | 2 | Markdown 排版成 PDF / 长图 / 讲稿页（自带多套模板） | `facet` |
 | `reel` | 本地 | [@kubor/reel-kit](https://github.com/webkubor/reel-kit) | 3 | 素材 + 逐句文案 → 竖版成片（模板 / 转场 / 配乐 / 可选配音） | `reel` + **ffmpeg** |
 | `browser` | 本地 | [ego-browser](https://lite.ego.app) | 13 | 真实 Chrome：打开/快照/点击/输入/截图/执行 JS + **人类交接协议** + 多 agent 会话隔离 | `ego-browser` |
@@ -106,7 +106,7 @@ claude mcp add cs -- ~/.local/bin/cs-mcp
 ```
 
 > **为什么不是 `npx -y cs-mcp`**：这个网关底下包着 museav-cli、mlx-vlm-kit、
-> contrast-guard、facet、reel-kit、lite-browser 一堆东西 —— 用户为了用上全套能力，
+> ui-craft、facet、reel-kit、lite-browser 一堆东西 —— 用户为了用上全套能力，
 > 已经要付 6 种安装方式的代价（npm / pipx / brew / curl）。如果网关自己还得
 > `npm i -g` 或 `npx -y`，等于在最前面再加一道 Node + npm + registry 网络的门槛，
 > 而它本该是**把门槛降到一条命令**的那一层。多数用户会卡在起手第一步。
@@ -255,7 +255,7 @@ CLI 自带**平台资产护栏**：Skill 正文里抄了 MUSE AV 平台公共模
 ```bash
 npm i -g museav-cli        # museav 组：出图 / 后期 / 素材 / SkillHub（需要 >= 3.9.0）
 pipx install git+https://github.com/webkubor/mlx-vlm-kit.git   # vlm 组
-npm i -g contrast-guard    # contrast 组
+npm i -g ui-craft    # contrast 组
 npm i -g github:webkubor/facet   # facet 组（git 分发，不在 npm 上更新）
 npm i -g github:webkubor/reel-kit   # reel 组（git 分发；另外要 brew install ffmpeg）
 curl -fsSL https://raw.githubusercontent.com/webkubor/lite-browser/main/install.sh | bash   # browser 组

@@ -54,9 +54,9 @@ export interface CliSpec {
   /**
    * 退出码是**判据**而不是故障 —— 非零时照样把报告交回给 agent。
    *
-   * 2026-10-02 实测踩到的：contrast-guard 检查不达标时把完整 JSON 报告打到
+   * 2026-10-02 实测踩到的：ui-craft 检查不达标时把完整 JSON 报告打到
    * **stdout**、然后 exit 1（它就是给 CI 当闸门用的）。按「非零=调用失败」处理，
-   * agent 拿到的是「contrast-guard --json 执行失败」，而真正有价值的报告
+   * agent 拿到的是「ui-craft --json 执行失败」，而真正有价值的报告
    * （哪一对颜色、比值多少、建议改成什么）全被丢掉 —— 它只会以为工具坏了。
    */
   verdictExit?: boolean;

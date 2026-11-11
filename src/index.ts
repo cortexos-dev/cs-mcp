@@ -29,7 +29,7 @@
  * |----|------|------|--------|
  * | museav   | museav-cli      | **云能力**（在线、需登录） | 出图/出视频、本地后期、模板技能、素材、SkillHub |
  * | vlm      | mlx-vlm-kit     | 本地 | 离线看图（Apple Silicon） |
- * | contrast | contrast-guard  | 本地 | 对比度门禁：静态检查 + 渲染后计量 |
+ * | contrast | ui-craft  | 本地 | 对比度门禁：静态检查 + 渲染后计量 |
  * | facet    | @webkubor/facet | 本地 | Markdown 排版成 PDF / 长图 / 讲稿页 |
  * | reel     | @kubor/reel-kit | 本地 | 素材 + 逐句文案 → 竖版成片（需要 ffmpeg） |
  * | browser  | ego-browser     | 本地 | ego lite 的 Chromium 操控 + 人类交接协议 |

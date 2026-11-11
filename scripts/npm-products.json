@@ -23,7 +23,7 @@
     "@webkubor/facet": "owner 2026-11-04：排版工具，不是为 npm 做的产物。git 分发：npm i -g github:webkubor/facet",
     "@kubor/reel-kit": "owner 2026-11-04：视频合成工具，不是 npm 库、不维护 npm。git 分发：npm i -g github:webkubor/reel-kit",
     "fovea": "magpie 插件市场分发（magpie plugin add fovea / github:webkubor/fovea），不是 npm 产品。且 npm 上的 fovea 是 govindchaudhary69 的无关包（2026-08-16 发布的 fixation-point 工具），本仓不得占用该名字发版",
-    "frontend-contrast-guard": "CLI 经 git 分发（2026-11-04 提交 6a03ad0 明确「清除发布 npm 暗示」）。npm 上的 contrast-guard 是本仓改名前的早期版本（owner kubor，停在 0.3.0），不是当前发布渠道",
+    "ui-craft": "CLI 经 git 分发（2026-11-04 提交 6a03ad0 明确「清除发布 npm 暗示」）。npm 上的 ui-craft 是本仓改名前的早期版本（owner kubor，停在 0.3.0），不是当前发布渠道",
     "agent-lens": "magpie 插件市场分发，不是 npm 产品"
   }
 }

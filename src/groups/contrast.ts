@@ -1,5 +1,5 @@
 /**
- * 能力分组：contrast-guard —— 对比度门禁（开源项目 contrast-guard）
+ * 能力分组：ui-craft —— 对比度门禁（开源项目 ui-craft）
  *
  * 三个工具，对应 CLI 自己的三条路径：
  *   check    静态查「色值对不对」（读 contrast.config.*，零依赖，CI 里裸跑）
@@ -84,10 +84,10 @@ export function registerContrast(server: McpServer): number {
 export const contrastGroup: CapabilityGroup = {
   id: "contrast",
   title: "前端视觉与对比度门禁",
-  project: "frontend-contrast-guard",
-  homepage: "https://github.com/webkubor/frontend-contrast-guard",
+  project: "ui-craft",
+  homepage: "https://github.com/webkubor/ui-craft",
   summary:
-    "静态查色值配对、渲染后量实际字号/灰阶/动效、存基线与基线对比（原 contrast-guard，现升级为 frontend-contrast-guard）。" +
+    "静态查色值配对、渲染后量实际字号/灰阶/动效、存基线与基线对比（原 ui-craft，现升级为 ui-craft）。" +
     "「丑的每一处单看往往都『对』」，所以 check 与 measure 分工，别只跑一个。",
   cli: CONTRAST_CLI,
   register: registerContrast,

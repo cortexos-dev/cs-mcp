@@ -22,7 +22,7 @@ import type { CliSpec } from "./cli.js";
  * | museav       | 0 | `3.12.0`            | ✅ 唯一有真实版本下限的（3.9.0 起命令才齐） |
  * | vlm          | 0 | `vlm 0.1.0`         | ❌ 能报版本，但没有确立的下限，填了纯属自找 |
  * | ego-browser | 0 | `ego-browser 0.5.1.13`| ❌ 同上 |
- * | contrast-guard | **2** | 空（话在 stderr：「未找到 contrast.config」） | ❌ 见下 |
+ * | ui-craft | **2** | 空（话在 stderr：「未找到 contrast.config」） | ❌ 见下 |
  * | facet        | **1** | 空（node 内部异常栈） | ❌ 见下（0.4.2 起 `--version` 正常返回 exit 0，但仍无确立下限，不填） |
  * | reel         | **1** | 打印帮助文本，**全文没有版本号** | ❌ 见下 |
  *
@@ -61,15 +61,15 @@ export const VLM_CLI: CliSpec = {
 };
 
 /**
- * 前端视觉、对比度与交互自适应守卫（原 contrast-guard，现演进为 frontend-contrast-guard）。
+ * 前端视觉、对比度与交互自适应守卫（原 ui-craft，现演进为 ui-craft）。
  * 静态检查 + 渲染后计量。check 是 cwd 敏感的（读 contrast.config.*）。
  */
 export const CONTRAST_CLI: CliSpec = {
-  name: "frontend-contrast-guard",
+  name: "ui-craft",
   envVar: "CONTRAST_GUARD_BIN",
-  command: "contrast-guard",
+  command: "ui-craft",
   purpose: "前端视觉、色彩对比度与交互自适应门禁靠它",
-  install: "npm i -g frontend-contrast-guard@latest (或 contrast-guard)",
+  install: "npm i -g ui-craft@latest (或 ui-craft)",
   // 无 minVersion：它的 --version 退出码 2（见文件头表格），填了整组会挂
   timeoutMs: 300_000,
   maxChars: 6000,

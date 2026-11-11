@@ -7,7 +7,7 @@
  * CLI 能力，串成一张任意 agent 都能调用的网。
  *
  * 分层是硬的：
- *   - **能力在 CLI 里**（cs / museav-cli / contrast-guard / facet / …）。
+ *   - **能力在 CLI 里**（cs / museav-cli / ui-craft / facet / …）。
  *     要加能力，先加到 CLI，不是加到这儿。
  *   - **MCP 只做串联**：探测、发现、调用、错误说人话。自己零实现。
  *

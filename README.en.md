@@ -62,7 +62,7 @@ Layering principle: Capabilities reside in CLIs; cs-mcp acts as a thin multiplex
 |---|---|:---:|---:|---|---|
 | `museav` | **cloud** | [museav-cli](https://github.com/webkubor/museav-cli) | 17 | Image / video generation, local post-processing (matting, upscaling, watermark removal, compression), template & skill listings, asset upload, image→template, SCULPT prompt reversal, SkillHub publishing | `museav-cli` ≥ 3.9.0 |
 | `vlm` | local | [mlx-vlm-kit](https://github.com/webkubor/mlx-vlm-kit) | 4 | Local offline vision: describe, ask, cover-check, reverse-prompt | `vlm` (Apple Silicon) |
-| `contrast` | local | [contrast-guard](https://github.com/webkubor/contrast-guard) | 3 | Contrast gating: static colour-pair check, rendered measurement, baselines | `contrast-guard` |
+| `contrast` | local | [ui-craft](https://github.com/webkubor/ui-craft) | 3 | Contrast gating: static colour-pair check, rendered measurement, baselines | `ui-craft` |
 | `facet` | local | [@webkubor/facet](https://github.com/webkubor/facet) | 2 | Typeset Markdown into PDF / long image / slide deck | `facet` |
 | `reel` | local | [@kubor/reel-kit](https://github.com/webkubor/reel-kit) | 3 | Assets + per-line copy → vertical video (templates / transitions / BGM / optional voice-over) | `reel` + **ffmpeg** |
 | `browser` | local | [ego-browser](https://lite.ego.app) | 13 | Real Chrome: open / snapshot / click / type / screenshot / JS eval + a **human hand-off protocol** + multi-agent session isolation | `ego-browser` |
@@ -107,7 +107,7 @@ claude mcp add cs -- ~/.local/bin/cs-mcp
 ```
 
 > **Why not `npx -y cs-mcp`**: this gateway wraps museav-cli, mlx-vlm-kit,
-> contrast-guard, facet, reel-kit and lite-browser — users already pay for six
+> ui-craft, facet, reel-kit and lite-browser — users already pay for six
 > different install mechanisms (npm / pipx / brew / curl) to get the full set.
 > If the gateway itself needs `npm i -g` or `npx -y`, that adds a Node + npm +
 > registry-network hurdle in front of everything else, when the whole point of
@@ -187,7 +187,7 @@ two halves of one pipeline.
 ```bash
 npm i -g museav-cli        # museav group: generation / post-processing / assets / SkillHub (>= 3.9.0)
 pipx install git+https://github.com/webkubor/mlx-vlm-kit.git   # vlm group
-npm i -g contrast-guard    # contrast group
+npm i -g ui-craft    # contrast group
 npm i -g github:webkubor/facet   # facet group (git-distributed, not updated on npm)
 npm i -g github:webkubor/reel-kit   # reel group (git-distributed; plus: brew install ffmpeg)
 curl -fsSL https://raw.githubusercontent.com/webkubor/lite-browser/main/install.sh | bash   # browser group
