@@ -5,7 +5,7 @@
 #
 # ## 为什么是这个形态
 #
-# cs-mcp 是「总网关」：底下包着 museav-cli、mlx-vlm-kit、contrast-guard、facet、
+# cs-mcp 是「总网关」：底下包着 museav-cli、mlx-vlm-kit、ui-craft、facet、
 # reel-kit、lite-browser 一堆东西。用户为了用上全套能力，已经要付 6 种安装方式的
 # 代价（npm / pipx / brew / curl）。如果网关自己还得 `npm i -g` 或 `npx -y`，
 # 等于在最前面再加一道 Node + npm + registry 网络的门槛 —— 而它本该是
