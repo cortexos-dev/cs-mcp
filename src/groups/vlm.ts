@@ -1,7 +1,7 @@
 /**
  * 能力分组：vlm —— 本地看图理解（开源项目 mlx-vlm-kit）
  *
- * 4 个工具：描述、任意提问、封面质检、反推出图 prompt。
+ * 5 个工具：描述、任意提问、封面质检、UI 截图审查、反推出图 prompt。
  * 免登录、零成本（本地 Qwen3-VL，Apple MLX）；**硬约束：Apple Silicon**。
  *
  * 与 museav 的 reverse 分工：reverse 走中台专做 SCULPT 格式反推；
@@ -61,6 +61,28 @@ server.tool(
 );
 
 server.tool(
+  "vlm_ui_review",
+  "UI 截图像素级审查（本地离线）：抓文字截断/溢出/遮挡、元素不齐、间距失控、对比度不足。" +
+    "结论三态 PASS/ISSUES_FOUND/NOT_DETERMINED，每条问题带位置+图中证据+建议；" +
+    "截图证明不了的事（交互/响应式/可访问性）列在 limits 里，不是验收全绿",
+  {
+    image: z.string().describe("UI 截图绝对路径（无扩展名也可，按内容识别）"),
+    context: z.string().optional().describe("页面用途或用户任务，如「设置页卡片操作区」"),
+    criteria: z.string().optional().describe("验收要求/设计约束，如「按钮尺寸必须一致」"),
+  },
+  async (params) => {
+    const file = requireFile(params.image, "image");
+    const args = ["ui-review", file, "--json"];
+    if (params.context) args.push("--context", params.context);
+    if (params.criteria) args.push("--criteria", params.criteria);
+    // 退出码契约（mlx-vlm-kit 0.2.0）：0=PASS 1=ISSUES_FOUND 2=NOT_DETERMINED。
+    // 不加 --fail-on-issues：MCP 侧靠 JSON 里的 status 字段判定，退出码只留诊断。
+    const out = await runVlm(args, 300_000, 6000);
+    return { content: [{ type: "text", text: out }] };
+  }
+);
+
+server.tool(
   "vlm_reverse_prompt",
   "反推出图 prompt（主体/风格/光线/构图），可直接喂 gen 复刻同风格",
   {
@@ -74,7 +96,7 @@ server.tool(
     return { content: [{ type: "text", text: out }] };
   }
 );
-  return 4;
+  return 5;
 }
 
 export const vlmGroup: CapabilityGroup = {
@@ -83,7 +105,7 @@ export const vlmGroup: CapabilityGroup = {
   project: "mlx-vlm-kit",
   homepage: "https://github.com/webkubor/mlx-vlm-kit",
   summary:
-    "本地离线看图：描述主体与色调、任意提问、音乐封面语义质检、反推出图 prompt。" +
+    "本地离线看图：描述主体与色调、任意提问、音乐封面语义质检、UI 截图审查、反推出图 prompt。" +
     "零成本不联网；需要 Apple Silicon（MLX）。",
   cli: VLM_CLI,
   register: registerVlm,

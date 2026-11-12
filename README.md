@@ -61,7 +61,7 @@
 | 分组 | 层次 | 开源项目 | 工具 | 干什么 | 前置 |
 |---|---|:---:|---:|---|---|
 | `museav` | **云能力** | [museav-cli](https://github.com/webkubor/museav-cli) | 17 | 出图 / 出视频、本地后期（抠图·超分·去水印·压缩）、模板与技能清单、素材上传、图生模板、SCULPT 反推、小红书 SkillHub 发布 | `museav-cli` ≥ 3.9.0 |
-| `vlm` | 本地 | [mlx-vlm-kit](https://github.com/webkubor/mlx-vlm-kit) | 4 | 本地离线看图：描述、任意提问、封面质检、反推出图 prompt | `vlm`（Apple Silicon） |
+| `vlm` | 本地 | [mlx-vlm-kit](https://github.com/webkubor/mlx-vlm-kit) | 5 | 本地离线看图：描述、任意提问、封面质检、UI 截图审查、反推出图 prompt | `vlm`（Apple Silicon） |
 | `contrast` | 本地 | [ui-craft](https://github.com/webkubor/ui-craft) | 3 | 对比度门禁：静态查色值达不达标、渲染后量实际字号灰阶、存基线与基线对比 | `ui-craft` |
 | `facet` | 本地 | [@webkubor/facet](https://github.com/webkubor/facet) | 2 | Markdown 排版成 PDF / 长图 / 讲稿页（自带多套模板） | `facet` |
 | `reel` | 本地 | [@kubor/reel-kit](https://github.com/webkubor/reel-kit) | 3 | 素材 + 逐句文案 → 竖版成片（模板 / 转场 / 配乐 / 可选配音） | `reel` + **ffmpeg** |
@@ -156,13 +156,14 @@ claude mcp add cs -- node "$PWD/dist/index.js"
 
 本地后期那四个不联网、不消耗中台额度。
 
-### `vlm` 组 —— 本地看图理解（4）
+### `vlm` 组 —— 本地看图理解（5）
 
 | 工具 | 干什么 |
 |---|---|
 | `vlm_describe` | 描述图片主体与色调 |
 | `vlm_ask` | 对图片任意提问 |
 | `vlm_cover_check` | 音乐封面语义质检（`batch=true` 递归目录） |
+| `vlm_ui_review` | UI 截图像素级审查：三态结论 + 每条问题带位置/证据/建议；改完页面截图挑刺用它，别拿 `vlm_ask` 手搓 |
 | `vlm_reverse_prompt` | 反推出图 prompt，喂回 `museav_gen_background` |
 
 四个都免登录、零成本、不联网（本地 Qwen3-VL）；**需要 Apple Silicon**。
@@ -378,7 +379,7 @@ MCP 侧不写任何业务逻辑。
 
 ```bash
 node test-mcp.mjs      # 起 server 跑 initialize + tools/list
-                       # 断言：55 个工具；每个名字以所属分组 id 开头；旧变量名仍生效
+                       # 断言：56 个工具；每个名字以所属分组 id 开头；旧变量名仍生效
 ```
 
 `CS_MCP_GROUPS=all` 是测试用的启动方式 —— CI 机器上什么 CLI 都没装，
